@@ -1,22 +1,25 @@
 CC = g++
 CFLAGS = -std=gnu++0x -Wall -Ofast
 
-all: memFH.o monodomainFD.o output.o main.o run
+all: MemFH.o PointStim.o MonodomainFD.o Output.o Main.o run
 
-memFH.o: memFH.cc memFH.h types.h constants.h
-	${CC} ${CFLAGS} -c memFH.cc
+MemFH.o: MemFH.cc MemFH.h Types.h Constants.h
+	${CC} ${CFLAGS} -c MemFH.cc
 
-monodomainFD.o: monodomainFD.cc monodomainFD.h types.h constants.h
-	${CC} ${CFLAGS} -c monodomainFD.cc
+PointStim.o: PointStim.cc PointStim.h Types.h Constants.h
+	${CC} ${CFLAGS} -c PointStim.cc
 
-output.o: output.cc output.h types.h constants.h
-	${CC} ${CFLAGS} -c output.cc
+MonodomainFD.o: MonodomainFD.cc MonodomainFD.h Types.h Constants.h
+	${CC} ${CFLAGS} -c MonodomainFD.cc
 
-main.o: main.cc memFH.h monodomainFD.h types.h constants.h
-	${CC} ${CFLAGS} -c  main.cc
+Output.o: Output.cc Output.h Types.h Constants.h
+	${CC} ${CFLAGS} -c Output.cc
 
-run: memFH.o monodomainFD.o output.o main.o
-	${CC} ${CFLAGS} memFH.o monodomainFD.o output.o main.o -o run
+Main.o: Main.cc MemFH.h MonodomainFD.h Types.h Constants.h
+	${CC} ${CFLAGS} -c  Main.cc
+
+run: MemFH.o PointStim.o MonodomainFD.o Output.o Main.o
+	${CC} ${CFLAGS} MemFH.o PointStim.o MonodomainFD.o Output.o Main.o -o run
 
 clean:
 	rm -rf *o run
