@@ -19,7 +19,8 @@ ims=[]
 #step through each time-step and display image
 for i in range(20):
     b=a[i,:].reshape((100,100)) 
-    im=plt.imshow(b, interpolation='bilinear', extent=[0,1,0, 1], vmin=0, vmax=100)
+    #get correct orientation with b.T (i.e. transpose)
+    im=plt.imshow(b.T, interpolation='bilinear', extent=[0,1,0, 1], vmin=0, vmax=100)
     ims.append([im])
     plt.pause(0.1)
 #plt.show()

@@ -13,7 +13,7 @@ void monodomainFD::explicitTS(ARRAY2D& Vm, ARRAY2D& iion, ARRAY2D& stim, double 
     {
         for (int j=1; j < (Vm[i].size()-1); ++j)
         {
-            Vm[i][j] = Vm[i][j]+(dt/Cm)*((1/Beta)*( ((Vm[i+1][j] - 2*Vm[i][j] + Vm[i-1][j])/dx2) + ((Vm[i][j+1] - 2*Vm[i][j] + Vm[i][j-1])/dy2)) + iion[i][j] + stim[i][j]);
+            Vm[i][j] = Vm[i][j]+(dt/Cm)*((1/Beta)*( sigma_x*((Vm[i+1][j] - 2*Vm[i][j] + Vm[i-1][j])/dx2) + sigma_y*((Vm[i][j+1] - 2*Vm[i][j] + Vm[i][j-1])/dy2)) + iion[i][j] + stim[i][j]);
 
         }
     }
